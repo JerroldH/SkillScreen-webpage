@@ -1,0 +1,49 @@
+SkillScreen — Proprietary / All Rights Reserved
+
+Copyright (c) 2026 the respective SkillScreen contributors.
+All rights reserved.
+
+Scope
+This notice applies to project-authored code, documentation, figures and
+experiment artifacts only to the extent that they are copyright-protected and
+owned by their respective SkillScreen contributors. Copyright ownership remains
+with the respective rights holders.
+
+No public reuse license
+Except for the authorized collaboration below, a separate written permission,
+or rights preserved below, no permission is granted to use, execute, copy,
+modify, create derivative works from, distribute, sublicense or commercialize
+the covered material. Research use and use for AI model training, fine-tuning
+or distillation require prior written permission from the applicable rights
+holders. Public availability does not grant a general reuse license.
+
+Authorized project collaboration
+Authorized SkillScreen team members and collaborators may access, execute, copy
+and modify the covered material, including train and evaluate SkillScreen models,
+solely for their work on the SkillScreen project. They may use coding agents acting
+on their behalf for this work. This limited permission does not grant rights for
+independent reuse, external redistribution, commercial licensing or AI model
+training outside the authorized project work, including training an agent
+provider's own models. Separate written permission is required for use beyond
+that project work.
+
+Third-party material and separate releases
+Third-party content is excluded from this notice and retains its original
+licenses and attribution requirements; see THIRD_PARTY_NOTICES.md. This notice
+does not restrict rights granted by upstream rights holders. Separately released
+artifacts, including Hugging Face releases, remain subject to the terms stated
+for those releases. Existing separate licenses or permissions are not revoked
+by this notice.
+
+Rights preserved
+This notice does not limit rights required by applicable law, including
+statutory exceptions, or rights granted under GitHub's Terms of Service.
+No patent or trademark rights are granted by this notice.
+
+Disclaimer
+To the extent permitted by applicable law, the covered material is provided
+"AS IS", without warranties of any kind, and the rights holders disclaim
+liability arising from its use.
+
+For permissions beyond authorized project collaboration, contact the repository
+owner to obtain permission from the applicable rights holders.

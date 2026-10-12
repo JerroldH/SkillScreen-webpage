@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="SkillScreen studies high-recall screening of malicious agent skills with compact decision models.">
+  <meta name="theme-color" content="#f5f6f3">
+  <title>SkillScreen: High-Recall Screening of Malicious Agent Skills with Decision Models</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/instrument-sans.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+  <script src="evidence.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header wrap">
+    <a class="wordmark" href="#top" aria-label="SkillScreen home">SkillScreen</a>
+    <nav aria-label="Main navigation">
+      <a href="#method">Method</a><a href="#evidence">Evidence</a><a href="#resources">Resources</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero wrap" id="top" aria-labelledby="project-title">
+      <div class="hero-heading">
+        <h1 id="project-title">SkillScreen</h1>
+        <p class="paper-title">High-recall screening of malicious agent skills<br> with decision models.</p>
+      </div>
+      <div class="hero-bottom">
+        <div class="project-people">
+          <p class="authors"><a href="https://www.linkedin.com/in/jerrold-huang/" target="_blank" rel="noreferrer">Jerrold Huang</a>, <a href="https://junwei0102.github.io/" target="_blank" rel="noreferrer">Junwei Quan</a>,<br class="authors-break"> <a href="https://saiyuelyu.github.io/" target="_blank" rel="noreferrer">Saiyue Lyu</a>, <a href="https://www.linkedin.com/in/zihan-guo-366232290/" target="_blank" rel="noreferrer">Zihan Guo</a>, <a href="https://yingqiangge.github.io/" target="_blank" rel="noreferrer">Yingqiang Ge</a></p>
+        </div>
+        <div class="project-links" aria-label="Project links">
+          <a class="paper-link" role="link" aria-disabled="true" tabindex="0" title="Draft link coming soon">Paper <span class="link-detail">draft</span></a>
+          <a href="https://github.com/JerroldH/SkillScreen" target="_blank" rel="noreferrer">Code <span aria-hidden="true">↗</span></a>
+          <a href="https://huggingface.co/SkillJev/SkillJev-2B" target="_blank" rel="noreferrer">Model <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+
+      <section class="mechanism" id="method" aria-labelledby="method-title" data-mode="score">
+        <div class="mechanism-top">
+          <h2 id="method-title">Inside the scorer</h2>
+          <div class="mode-controls" role="group" aria-label="Explore the method">
+            <button type="button" data-mode="score" class="active" aria-pressed="true">Inference</button>
+            <button type="button" data-mode="train" aria-pressed="false">Training</button>
+            <button type="button" data-mode="calibrate" aria-pressed="false">Calibration</button>
+          </div>
+          <button class="motion-toggle" type="button" id="motion-toggle" aria-pressed="false">Pause animation <span aria-hidden="true">Ⅱ</span></button>
+        </div>
+
+        <div class="mechanism-body">
+          <div class="diagram-input">
+            <p class="node-label">Premise + hypothesis</p>
+            <div class="skill-sheet" aria-label="A skill Markdown document">
+              <div class="sheet-header"><span class="file-corner" aria-hidden="true"></span><span>SKILL.md</span><span class="md-label">MD</span></div>
+              <div class="sheet-content" aria-hidden="true">
+                <span>## Instructions</span>
+                <i style="--line:92%"></i><i style="--line:76%"></i><i style="--line:85%"></i>
+              </div>
+            </div>
+            <div class="hypothesis"><span>Fixed hypothesis</span><p>This AI agent skill<br>is malicious.</p></div>
+            <div class="training-targets" aria-hidden="true"><span>Malicious → entailment</span><span>Benign → contradiction</span></div>
+          </div>
+
+          <div class="flow flow-in" aria-hidden="true"><i></i></div>
+
+          <div class="diagram-model">
+            <div class="model-heading"><p class="node-label">SkillScreen · 2B</p><span>2.19M trainable parameters</span></div>
+            <svg class="model-svg" viewBox="0 0 390 260" role="img" aria-labelledby="model-svg-title model-svg-desc">
+              <title id="model-svg-title">A frozen model with trainable adapters and an NLI head</title>
+              <desc id="model-svg-desc">During training, updates reach the LoRA adapters and classification head. The backbone remains frozen. Model layers are schematic.</desc>
+              <defs><marker id="arrow-teal" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto"><path d="M0 0L6 3L0 6" fill="none" stroke="currentColor"/></marker></defs>
+              <g class="weight-sheet weight-back">
+                <path class="base-plane" d="M27 68L143 39L143 151L27 180Z"/>
+                <path class="matrix-grid" d="M65.7 58.3V170.3M104.3 48.7V160.7M27 105.3L143 76.3M27 142.7L143 113.7"/>
+                <path class="adapter" d="M143 39L177 30.5L177 142.5L143 151Z"/>
+              </g>
+              <g class="weight-sheet weight-front">
+                <path class="base-plane" d="M54 88L170 59L170 171L54 200Z"/>
+                <path class="matrix-grid" d="M92.7 78.3V190.3M131.3 68.7V180.7M54 125.3L170 96.3M54 162.7L170 133.7"/>
+                <path class="adapter" d="M170 59L204 50.5L204 162.5L170 171Z"/>
+              </g>
+              <path class="model-connection" d="M209 130H264"/>
+              <path class="connection-arrow" d="M259 126L265 130L259 134"/>
+              <rect class="head-block" x="270" y="96" width="82" height="69" rx="2"/>
+              <text class="head-text" x="311" y="125" text-anchor="middle">NLI</text>
+              <text class="head-text" x="311" y="147" text-anchor="middle">head</text>
+              <text class="diagram-text lora-label" x="221" y="35" text-anchor="middle">LoRA</text>
+              <path class="adapter-leader" d="M216 42L193 57"/>
+              <text class="diagram-text base-label" x="112" y="225" text-anchor="middle">Frozen OpenJev base</text>
+              <g class="training-feedback">
+                <path class="gradient-path" d="M311 166V240H186V176" marker-end="url(#arrow-teal)"/>
+                <path class="gradient-path" d="M311 240V177" marker-end="url(#arrow-teal)"/>
+                <text x="254" y="256" text-anchor="middle">Cross-entropy updates</text>
+              </g>
+            </svg>
+          </div>
+
+          <div class="flow flow-out" aria-hidden="true"><i></i></div>
+
+          <div class="diagram-decision">
+            <p class="node-label">A continuous score</p>
+            <div class="probability">p<span>(malicious)</span></div>
+            <div class="score-track" aria-label="Schematic calibrated score and review threshold">
+              <div class="review-region"></div><div class="threshold"><span>τ</span></div>
+            </div>
+            <div class="decision-labels"><span>No alert</span><span>Review</span></div>
+            <div class="threshold-note"><span id="threshold-state">Threshold frozen</span><p>Set for 99% recall<br>on validation data</p></div>
+          </div>
+        </div>
+        <div class="mechanism-footer">
+          <p id="mode-description">One forward pass scores the skill against the maliciousness hypothesis. Calibrate the NLI score, then apply the frozen review threshold.</p>
+          <span class="schematic-note">Method illustration<br>No live inference</span>
+        </div>
+      </section>
+      <p class="hero-caption">A local 2B model learns to screen <code>SKILL.md</code>, with a review threshold chosen for high recall.</p>
+    </section>
+
+    <section class="research-intro wrap" aria-labelledby="research-question">
+      <h2 id="research-question">Catch the attacks.<br>Keep the review load down.</h2>
+      <div class="research-copy">
+        <p>Agent skills can instruct assistants to read files, run commands and access credentials. Legitimate tools and malicious skills often use the same operations.</p>
+        <p>SkillScreen learns from labelled skills to judge the task in context. A compact decision model reduces false alarms at high recall. Three evaluation protocols test what it learns, how it transfers to new attack structures and what changes with unfamiliar sources.</p>
+      </div>
+    </section>
+
+    <section class="evidence-section" id="evidence" aria-labelledby="evidence-title">
+      <div class="wrap">
+        <div class="evidence-heading">
+          <div><h2 id="evidence-title">Learn the task.<br>Test what transfers.</h2><p>False positives at 99% recall · MaliciousSkillBench</p></div>
+          <a class="text-link" href="assets/results.csv" download>Download the numbers <span aria-hidden="true">↓</span></a>
+        </div>
+        <div class="protocol-controls" role="group" aria-label="Evaluation protocol">
+          <button type="button" data-protocol="sbr" aria-pressed="true" class="active">Within-source learning <span>SBR</span></button>
+          <button type="button" data-protocol="msd" aria-pressed="false">Structural generalization <span>MSD</span></button>
+          <button type="button" data-protocol="sd" aria-pressed="false">Source-shift generalization <span>SD</span></button>
+        </div>
+        <p class="protocol-question" id="protocol-question">Can a small model learn effective screening within familiar sources?</p>
+        <div class="results-layout">
+          <div class="results-plot">
+            <div class="axis-caption"><span>Benign skills flagged for review</span><span>Lower is better</span></div>
+            <div id="results-bars"></div>
+            <div class="chart-axis" aria-hidden="true"><span>0%</span><span>25%</span><span>50%</span><span>75%</span><span>100%</span></div>
+          </div>
+          <aside class="result-reading">
+            <span class="comparison-label">SkillScreen vs. Word-SVM</span>
+            <div class="comparison-value"><span id="comparison-gap">21.4</span><span>pp</span></div>
+            <p>fewer false positives<br>at the same recall</p>
+            <span class="comparison-footnote">Mean FPR difference, calculated before rounding.</span>
+          </aside>
+        </div>
+        <p id="protocol-summary" class="protocol-summary"></p>
+        <p id="evidence-status" class="sr-only" aria-live="polite"></p>
+        <details class="evaluation-notes">
+          <summary>How to read these results <span aria-hidden="true">+</span></summary>
+          <div class="notes-content">
+            <p>Each protocol trains a fresh model on its own training partition. These comparisons sweep held-out test scores to match a 99% recall target. Operational thresholds are selected separately using validation data and frozen before test scoring.</p>
+            <p>Both neural models average five seeds on SBR and MSD, with one epoch of training. On SD, SkillScreen averages five seeds and ModernBERT uses five converged runs from six attempts. The study reports every run and additional training budgets.</p>
+            <p>The paired FPR difference between ModernBERT and SkillScreen is 5.4 percentage points on SBR, with a 95% interval of [−0.1, 15.5]. On MSD, it is 7.8 points [−3.4, 22.1]. On SD, it is 24.1 points [14.4, 32.7]. Model performance depends on the evaluation protocol.</p>
+            <p>The SD evaluation also includes TypeSafe Jev 1.13 and SkillSpector-static on the same Markdown inputs. Both reach 99% recall only at 100% FPR. Their results are included in the download.</p>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <section class="findings wrap" aria-labelledby="findings-title">
+      <div class="findings-intro"><h2 id="findings-title">What makes<br>the difference?</h2><p>The experiments test the training recipe and where it transfers.</p></div>
+      <div class="finding-list">
+        <article><h3>Specialization drives detection.</h3><p>On MSD, training raises recall from about 4% for untuned OpenJev to 95.6% at the native 0.5 threshold. The recipe also works from a plain base checkpoint.</p></article>
+        <article><h3>The hypothesis matters at high recall.</h3><p>Removing the task hypothesis increases FPR at 99% recall by 22.1 percentage points on MSD. Naming the task also helps when labels are scarce.</p></article>
+        <article><h3>Benign source shift is the harder test.</h3><p>SkillScreen retains 97.3% recall at the native threshold on unseen sources. Unfamiliar benign skills raise the false-positive rate to 36.0%, exposing the next challenge for screening.</p></article>
+      </div>
+    </section>
+
+    <section class="resources wrap" id="resources" aria-labelledby="resources-title">
+      <div class="resources-heading"><h2 id="resources-title">Explore the work.</h2><p>Inspect the model or reproduce the experiments. The paper link is coming soon.</p></div>
+      <div class="resource-list">
+        <a role="link" aria-disabled="true" tabindex="0" title="Draft link coming soon"><div><h3>The paper</h3><p>Methods, results and ablations</p></div><span class="resource-kind">Research draft · Coming soon</span></a>
+        <a href="https://huggingface.co/SkillJev/SkillJev-2B" target="_blank" rel="noreferrer"><div><h3>SkillJev-2B</h3><p>Merged weights and the original adapter</p></div><span class="resource-kind">Hugging Face · v1</span><span class="resource-arrow" aria-hidden="true">↗</span></a>
+        <a href="https://github.com/JerroldH/SkillScreen" target="_blank" rel="noreferrer"><div><h3>Code and experiments</h3><p>Training, evaluation and reproducible figures</p></div><span class="resource-kind">GitHub</span><span class="resource-arrow" aria-hidden="true">↗</span></a>
+      </div>
+      <p class="release-note">The released v1 checkpoint was trained with the Source-Balanced Random protocol. The study trains separate models for each split. SkillScreen scores the Markdown text and routes alerts for review.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer wrap"><span class="footer-wordmark">SkillScreen</span><a href="#top">Back to top ↑</a></footer>
+</body>
+</html>
