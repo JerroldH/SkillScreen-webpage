@@ -20,6 +20,6 @@ Open http://127.0.0.1:4173. The method animation is illustrative. Results compar
 
 Edit index.html, style.css, app.js or evidence.js. Downloadable numbers are in assets/results.csv. Commit and push to main to update GitHub Pages.
 
-The Paper link stays inactive until a publication link is available. The Models link opens https://huggingface.co/SkillScreen. The resource section links directly to SkillScreen-2B-SBR.
+Both Paper links open https://arxiv.org/abs/2610.17727. The Models link opens https://huggingface.co/SkillScreen. The resource section links directly to SkillScreen-2B-SBR.
 
 Project-authored content is All Rights Reserved. See LICENSE and THIRD_PARTY_NOTICES.md. The bundled font retains its SIL Open Font License.

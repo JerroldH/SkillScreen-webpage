@@ -10,7 +10,7 @@
   <link rel="preload" href="assets/instrument-sans.ttf" as="font" type="font/ttf" crossorigin>
   <link rel="stylesheet" href="style.css?v=2">
   <script src="app.js" defer></script>
-  <script src="evidence.js" defer></script>
+  <script src="evidence.js?v=arxiv" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -32,7 +32,7 @@
           <p class="authors">Jerrold Huang, <a href="https://junwei0102.github.io/" target="_blank" rel="noreferrer">Junwei Quan</a>,<br class="authors-break"> <a href="https://saiyuelyu.github.io/" target="_blank" rel="noreferrer">Saiyue Lyu</a>, Zihan Guo, <a href="https://yingqiangge.github.io/" target="_blank" rel="noreferrer">Yingqiang Ge</a></p>
         </div>
         <div class="project-links" aria-label="Project links">
-          <a class="paper-link" role="link" aria-disabled="true" tabindex="0" title="Draft link coming soon">Paper <span class="link-detail">draft</span></a>
+          <a class="paper-link" href="https://arxiv.org/abs/2610.17727" target="_blank" rel="noreferrer">Paper <span aria-hidden="true">↗</span></a>
           <a href="https://github.com/JerroldH/SkillScreen" target="_blank" rel="noreferrer">Code <span aria-hidden="true">↗</span></a>
           <a href="https://huggingface.co/SkillScreen" target="_blank" rel="noreferrer">Models <span aria-hidden="true">↗</span></a>
         </div>
@@ -114,7 +114,6 @@
           <span class="schematic-note">Method illustration<br>No live inference</span>
         </div>
       </section>
-      <p class="hero-caption">A local 2B model learns to screen <code>SKILL.md</code>, with a review threshold chosen for high recall.</p>
     </section>
 
     <section class="research-intro wrap" aria-labelledby="research-question">
@@ -132,11 +131,11 @@
           <a class="text-link" href="assets/results.csv" download>Download the numbers <span aria-hidden="true">↓</span></a>
         </div>
         <div class="protocol-controls" role="group" aria-label="Evaluation protocol">
-          <button type="button" data-protocol="sbr" aria-pressed="true" class="active">Within-source learning <span>SBR</span></button>
-          <button type="button" data-protocol="msd" aria-pressed="false">Structural generalization <span>MSD</span></button>
+          <button type="button" data-protocol="sbr" aria-pressed="false">Within-source learning <span>SBR</span></button>
+          <button type="button" data-protocol="msd" aria-pressed="true" class="active">Structural generalization <span>MSD</span></button>
           <button type="button" data-protocol="sd" aria-pressed="false">Source-shift generalization <span>SD</span></button>
         </div>
-        <p class="protocol-question" id="protocol-question">Can a small model learn effective screening within familiar sources?</p>
+
         <div class="results-layout">
           <div class="results-plot">
             <div class="axis-caption"><span>Benign skills flagged for review</span><span>Lower is better</span></div>
@@ -145,7 +144,7 @@
           </div>
           <aside class="result-reading">
             <span class="comparison-label">SkillScreen vs. Word-SVM</span>
-            <div class="comparison-value"><span id="comparison-gap">21.4</span><span>pp</span></div>
+            <div class="comparison-value"><span id="comparison-gap">23.0</span><span>pp</span></div>
             <p>fewer false positives<br>at the same recall</p>
             <span class="comparison-footnote">Mean FPR difference, calculated before rounding.</span>
           </aside>
@@ -174,13 +173,13 @@
     </section>
 
     <section class="resources wrap" id="resources" aria-labelledby="resources-title">
-      <div class="resources-heading"><h2 id="resources-title">Explore the work.</h2><p>Inspect the model or reproduce the experiments. The paper link is coming soon.</p></div>
+      <div class="resources-heading"><h2 id="resources-title">Explore the work.</h2><p>Inspect the model or reproduce the experiments.</p></div>
       <div class="resource-list">
-        <a role="link" aria-disabled="true" tabindex="0" title="Draft link coming soon"><div><h3>The paper</h3><p>Methods, results and ablations</p></div><span class="resource-kind">Research draft · Coming soon</span></a>
+        <a href="https://arxiv.org/abs/2610.17727" target="_blank" rel="noreferrer"><div><h3>The paper</h3><p>Methods, results and ablations</p></div><span class="resource-kind">arXiv</span><span class="resource-arrow" aria-hidden="true">↗</span></a>
         <a href="https://huggingface.co/SkillScreen/SkillScreen-2B-SBR" target="_blank" rel="noreferrer"><div><h3>SkillScreen-2B-SBR</h3><p>Merged weights and the original adapter</p></div><span class="resource-kind">Hugging Face · v1</span><span class="resource-arrow" aria-hidden="true">↗</span></a>
-        <a href="https://github.com/JerroldH/SkillScreen" target="_blank" rel="noreferrer"><div><h3>Code and experiments</h3><p>Training, evaluation and reproducible figures</p></div><span class="resource-kind">GitHub</span><span class="resource-arrow" aria-hidden="true">↗</span></a>
+        <a href="https://github.com/JerroldH/SkillScreen" target="_blank" rel="noreferrer"><div><h3>Code and experiments</h3><p>Table 1 reproduction and model reruns</p></div><span class="resource-kind">GitHub</span><span class="resource-arrow" aria-hidden="true">↗</span></a>
       </div>
-      <p class="release-note">Protocol checkpoints and the experimental 32K package model are available in the <a href="https://huggingface.co/SkillScreen" target="_blank" rel="noreferrer">SkillScreen organization</a>. All use a 0.5 cutoff.</p>
+      <p class="release-note">Protocol checkpoints and the experimental 32K package model are available in the <a href="https://huggingface.co/SkillScreen" target="_blank" rel="noreferrer">SkillScreen organization</a>.</p>
     </section>
   </main>
 
